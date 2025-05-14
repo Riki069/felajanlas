@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Felajanlas,Cel
 
-# Register your models here.
+admin.site.register(Felajanlas)
+admin.site.register(Cel)
