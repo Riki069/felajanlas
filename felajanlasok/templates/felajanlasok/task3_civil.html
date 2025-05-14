@@ -1,0 +1,30 @@
+{% extends 'felajanlasok/base.html' %}
+
+{% block title %}Civil célok{% endblock %}
+
+{% block content %}
+<div class="task-result">
+    <h2>{{ title }}</h2>
+
+    {% if civil_goals %}
+    <table>
+        <thead>
+            <tr>
+                <th>Azonosító</th>
+                <th>Megnevezés</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for goal in civil_goals %}
+            <tr>
+                <td>{{ goal.az }}</td>
+                <td>{{ goal.megnevezes }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="no-data">Nincsenek civil célok az adatbázisban.</p>
+    {% endif %}
+</div>
+{% endblock %}

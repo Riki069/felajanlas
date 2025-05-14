@@ -1,0 +1,46 @@
+{% extends 'felajanlasok/base.html' %}
+
+{% block title %}Márciusi kimutatás{% endblock %}
+
+{% block content %}
+<div class="task-result">
+    <h2>{{ title }}</h2>
+
+    {% if report_data %}
+    <div class="report">
+        <h3>Önkormányzat által felügyelt célokra tett felajánlások (2008. március)</h3>
+
+        {% for goal_id, goal_data in report_data.items %}
+        <div class="report-section">
+            <h4>{{ goal_data.name }} ({{ goal_id }})</h4>
+
+            {% for date, invoices in goal_data.dates.items %}
+            <div class="report-subsection">
+                <h5>{{ date|date:"Y. F j." }}</h5>
+
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Számla azonosító</th>
+                            <th>Összeg (Ft)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for invoice in invoices %}
+                        <tr>
+                            <td>{{ invoice.invoice_id }}</td>
+                            <td class="amount">{{ invoice.amount }} Ft</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="no-data">Nincs adat a márciusi kimutatáshoz.</p>
+    {% endif %}
+</div>
+{% endblock %}

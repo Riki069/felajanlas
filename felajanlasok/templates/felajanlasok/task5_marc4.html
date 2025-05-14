@@ -1,0 +1,34 @@
+{% extends 'felajanlasok/base.html' %}
+
+{% block title %}Március 4-i célok{% endblock %}
+
+{% block content %}
+<div class="task-result">
+    <h2>{{ title }}</h2>
+
+    <p>{{ date|date:"Y. F j." }} napján az alábbi célokra lehetett felajánlást tenni:</p>
+
+    {% if goals %}
+    <table>
+        <thead>
+            <tr>
+                <th>Azonosító</th>
+                <th>Megnevezés</th>
+                <th>Civil</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for goal in goals %}
+            <tr>
+                <td>{{ goal.az }}</td>
+                <td>{{ goal.megnevezes }}</td>
+                <td>{% if goal.civil %}Igen{% else %}Nem{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="no-data">Nincsenek célok erre a napra az adatbázisban.</p>
+    {% endif %}
+</div>
+{% endblock %}

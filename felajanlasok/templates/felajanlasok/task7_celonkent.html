@@ -1,0 +1,34 @@
+{% extends 'felajanlasok/base.html' %}
+
+{% block title %}Célonkénti felajánlások{% endblock %}
+
+{% block content %}
+<div class="task-result">
+    <h2>{{ title }}</h2>
+
+    {% if goals_with_totals %}
+    <table>
+        <thead>
+            <tr>
+                <th>Azonosító</th>
+                <th>Megnevezés</th>
+                <th>Civil összefogás</th>
+                <th>Összeg (Ft)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for goal in goals_with_totals %}
+            <tr>
+                <td>{{ goal.az }}</td>
+                <td>{{ goal.megnevezes }}</td>
+                <td>{% if goal.civil %}Igen{% else %}Nem{% endif %}</td>
+                <td class="amount">{{ goal.total|default:"0" }} Ft</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="no-data">Nincsenek felajánlások az adatbázisban.</p>
+    {% endif %}
+</div>
+{% endblock %}

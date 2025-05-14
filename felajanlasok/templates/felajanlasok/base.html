@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>AB érettségi: Felajánlás</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Főoldal</a></li>
+                <li><a href="{% url 'task3_civil' %}">3. Civil célok</a></li>
+                <li><a href="{% url 'task4_legtobb' %}">4. 99 Ft felajánlások</a></li>
+                <li><a href="{% url 'task5_marc4' %}">5. Március 4-i célok</a></li>
+                <li><a href="{% url 'task6_hanyszor' %}">6. 10 vs 90 Ft</a></li>
+                <li><a href="{% url 'task7_celonkent' %}">7. Célonkénti összegek</a></li>
+                <li><a href="{% url 'task8_marcius' %}">8. Márciusi jelentés</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+{% extends 'felajanlasok/base.html' %}
+
+{% block title %}10 vs 90 Ft felajánlások{% endblock %}
+
+{% block content %}
+<div class="task-result">
+    <h2>{{ title }}</h2>
+
+    <div class="stats-container">
+        <div class="stat-card">
+            <h3>10 forintos felajánlások</h3>
+            <div class="stat-value">{{ count_10 }} db</div>
+        </div>
+
+        <div class="stat-card">
+            <h3>90 forintos felajánlások</h3>
+            <div class="stat-value">{{ count_90 }} db</div>
+        </div>
+    </div>
+
+    <div class="conclusion">
+        {% if count_10 > count_90 %}
+        <p>A vásárlók gyakrabban ajánlottak fel 10 forintot, mint 90 forintot.</p>
+        {% elif count_90 > count_10 %}
+        <p>A vásárlók gyakrabban ajánlottak fel 90 forintot, mint 10 forintot.</p>
+        {% else %}
+        <p>A vásárlók ugyanolyan gyakran ajánlottak fel 10 és 90 forintot.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

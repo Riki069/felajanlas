@@ -1,0 +1,14 @@
+{% extends 'felajanlasok/base.html' %}
+
+{% block title %}Főoldal{% endblock %}
+
+{% block content %}
+<div class="welcome">
+    <div class="card-container">
+        <div class="card">
+            <h3>Adatok feltöltése</h3>
+            <a href="{% url 'upload' %}" class="btn">Feltöltés</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
